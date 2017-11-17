@@ -1,4 +1,7 @@
 class LineNotifiesController < ApplicationController
+    def index
+    end
+
     def auth
         uri = 'https://notify-bot.line.me/oauth/authorize' + \
             '?response_type=code' + \
@@ -13,5 +16,6 @@ class LineNotifiesController < ApplicationController
 
     def callback
         Rails.logger.info(params)
+        return redirect_to(root_path);
     end
 end
