@@ -12,5 +12,6 @@ class LineNotifiesController < ApplicationController
     end
 
     def callback
+        Rails.logger.info(params)
     end
 end
