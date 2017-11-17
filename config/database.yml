@@ -1,0 +1,36 @@
+default: &default
+  adapter: mysql2
+  pool: 5
+  timeout: 5000
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+
+development:
+  <<: *default
+  username: root
+  password: mysql
+  database: line_notify
+  # heroku mysql(CLEARDB_DATABASE_URL) scheme is mysql. replace it to mysql2 for using mysql2 gem
+  url: <%= (ENV['CLEARDB_DATABASE_URL'] || ENV['DATABASE_URL'] || 'mysql2://127.0.0.1').gsub(/^mysql:/, 'mysql2:') %>
+
+test:
+  <<: *default
+  username: root
+  password: mysql
+  database: line_notify_test
+  url: <%= (ENV['CLEARDB_DATABASE_URL'] || ENV['DATABASE_URL'] || 'mysql2://127.0.0.1').gsub(/^mysql:/, 'mysql2:') %>
+
+staging:
+  <<: *default
+  host: <%= ENV['RDS_HOST'] %>
+  database: <%= ENV['RDS_DB'] %>
+  username: <%= ENV['RDS_USER'] %>
+  password: <%= ENV['RDS_PASS'] %>
+
+production:
+  <<: *default
+  host: <%= ENV['RDS_HOST'] %>
+  database: <%= ENV['RDS_DB'] %>
+  username: <%= ENV['RDS_USER'] %>
+  password: <%= ENV['RDS_PASS'] %>
