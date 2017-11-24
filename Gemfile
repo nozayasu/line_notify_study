@@ -8,6 +8,7 @@ gem "coffee-rails", "~> 4.2"
 gem "faraday"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
+gem 'line-bot-api'
 gem "mysql2"
 gem 'oauth2'
 gem "rails_12factor", require: ENV.include?("HEROKU")
@@ -16,7 +17,6 @@ gem "settingslogic"
 gem "slim-rails"
 gem "twitter-bootstrap-rails"
 gem "uglifier", ">= 1.3.0"
-
 
 group :development do
   gem "activerecord-cause"
