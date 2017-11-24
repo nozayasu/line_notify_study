@@ -8,9 +8,9 @@ gem "coffee-rails", "~> 4.2"
 gem "faraday"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
-gem 'line-bot-api'
+gem "line-bot-api"
 gem "mysql2"
-gem 'oauth2'
+gem "oauth2"
 gem "rails_12factor", require: ENV.include?("HEROKU")
 gem "sass-rails", "~> 5.0"
 gem "settingslogic"
