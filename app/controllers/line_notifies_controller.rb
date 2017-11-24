@@ -24,6 +24,8 @@ class LineNotifiesController < ApplicationController
     end
 
     def callback
+        Rails.logger.info(params)
+
         code = params[:code]
         token = auth_client.auth_code.get_token(
             code,
@@ -31,10 +33,10 @@ class LineNotifiesController < ApplicationController
             :headers => { "Content-Type" => "application/x-www-form-urlencoded" }
         )
 
-        Rails.logger.info(params)
+        # TODO store token
         Rails.logger.info(token.token)
 
-        return redirect_to(root_path);
+        return redirect_to root_path
     end
 
     private
