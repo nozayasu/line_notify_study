@@ -18,12 +18,23 @@ class LineBotsController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
+          Rails.logger.info(event)
           message = {
             type: "text",
             text: event.message["text"]
           }
           client.reply_message(event["replyToken"], message)
         end
+      when Line::Bot::Event::Join
+        Rails.logger.info(event)
+        client.reply_message(event["replyToken"], {type: "text", text: "招待ありがとうございます！"})
+      when Line::Bot::Event::Leave
+        Rails.logger.info(event)
+      when Line::Bot::Event::Follow
+        Rails.logger.info(event)
+        client.reply_message(event["replyToken"], {type: "text", text: "友達追加ありがとうございます！"})
+      when Line::Bot::Event::Unfollow
+        Rails.logger.info(event)
       end
     }
 
