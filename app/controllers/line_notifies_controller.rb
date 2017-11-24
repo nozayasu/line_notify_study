@@ -1,6 +1,14 @@
 class LineNotifiesController < ApplicationController
     self.request_forgery_protection_token = :state
 
+    def valid_request_origin?
+        if forgery_protection_origin_check
+            request.origin == "https://notify-bot.line.me"
+        else
+            true
+        end
+    end
+
     def index
     end
 
