@@ -33,7 +33,6 @@ group :development do
   gem "did_you_mean"
   gem "hirb-unicode"
   gem "rack-dev-mark", group: :staging
-  gem "rubocop", "~> 0.35.1"
   gem "rack-mini-profiler"
   gem "view_source_map"
   gem "spring"
